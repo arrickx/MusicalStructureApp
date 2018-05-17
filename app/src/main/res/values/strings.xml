@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MusicalStructureApp</string>
+    <string name="now_playing_name">Now Playing</string>
+    <string name="test_song">Sample Song</string>
+    <string name="test_artist">Sample Artist</string>
+    <string name="test_word">Test</string>
+</resources>
