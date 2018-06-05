@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    style="@style/MainPage">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/test_word"
-        android:textSize="80sp"
-        android:layout_centerInParent="true"/>
+    <ImageView
+        android:id="@+id/music_image"
+        style="@style/MusicCoverImage"
+        android:src="@drawable/music" />
+
+
+    <LinearLayout style="@style/MusicInformationGroup">
+
+        <TextView
+            android:id="@+id/current_song"
+            style="@style/CurrentSongTextView"
+            android:text="@string/current_song" />
+
+        <TextView
+            android:id="@+id/current_artist"
+            style="@style/CurrentArtistTextView"
+            android:text="@string/current_artist" />
+    </LinearLayout>
+
+
+    <LinearLayout style="@style/ButtonGroup">
+
+        <ImageView
+            android:id="@+id/last_song"
+            style="@style/Button"
+            android:src="@drawable/last" />
+
+        <ImageView
+            android:id="@+id/pause_song"
+            style="@style/Button"
+            android:src="@drawable/pause" />
+
+        <ImageView
+            android:id="@+id/play_song"
+            style="@style/Button"
+            android:src="@drawable/play" />
+
+        <ImageView
+            android:id="@+id/next_song"
+            style="@style/Button"
+            android:src="@drawable/next" />
+    </LinearLayout>
+
 
 </RelativeLayout>
