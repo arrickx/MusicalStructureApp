@@ -1,7 +1,7 @@
 # Musical Structure App (part 1)
 > A multi-screen app that store a list of music and able to enter to now playing page.
 
-[![Image](map.gif)](Image)
+[![Image](showcase.gif)](Image)
 
 ## Getting Started
 
