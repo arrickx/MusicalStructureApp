@@ -3,10 +3,6 @@
     style="@style/MainPage"
     android:background="@android:color/background_light">
 
-    <TextView
-        style="@style/PlaylistTextView"
-        android:text="@string/playlist" />
-
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/list"
