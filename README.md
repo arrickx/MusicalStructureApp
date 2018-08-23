@@ -22,5 +22,6 @@
 ## Acknowledgments
 
 * **Icon Pack** was provided by [Roundicons](https://www.flaticon.com/packs/multimedia-2).
+* **ItemClickSupport** was provided by [Hugo Visser](http://www.littlerobots.nl/blog/Handle-Android-RecyclerView-Clicks/).
 
 

@@ -1,55 +1,79 @@
 package com.example.android.musicalstructureapp;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
- * {@link SongAdapter} is an {@link ArrayAdapter} that can provide the layout for each list item
+ * {@link SongAdapter} is an {@link RecyclerView.Adapter} that can provide the layout for each list item
  * based on a data source, which is a list of {@link Song} objects.
  */
-public class SongAdapter extends ArrayAdapter<Song> {
-    /**
-     * Create a new {@link SongAdapter} object.
-     *
-     * @param context is the current context (i.e. Activity) that the adapter is being created in.
-     * @param songs   is the list of {@link Song}s to be displayed.
-     */
-    public SongAdapter(Context context, ArrayList<Song> songs) {
-        super(context, 0, songs);
+public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
+    // Store a member variable for the contacts
+    private List<Song> mSong;
+
+    // Pass in the contact array into the constructor
+    public SongAdapter(List<Song> songs) {
+        mSong = songs;
     }
 
+    // Usually involves inflating a layout from XML and returning the holder
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        // Check if an existing view is being reused, otherwise inflate the view
-        View listItemView = convertView;
-        if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_item, parent, false);
-        }
+    public SongAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Context context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
 
-        // Get the {@link Song} object located at this position in the list
-        Song currentSong = getItem(position);
+        // Inflate the custom layout
+        View contactView = inflater.inflate(R.layout.list_item, parent, false);
 
-        // Find the TextView in the list_item.xml layout with the ID song_name.
-        TextView songNameTextView = (TextView) listItemView.findViewById(R.id.song_name);
-        // Get the song name from the currentSong object and set this text on
-        // the song_name TextView.
-        songNameTextView.setText(currentSong.getSongName());
-
-        // Find the TextView in the list_item.xml layout with the ID default_text_view.
-        TextView songArtistTextView = (TextView) listItemView.findViewById(R.id.artist_name);
-        // Get the artist name from the currentSong object and set this text on
-        // the artist_name TextView.
-        songArtistTextView.setText(currentSong.getSongArtist());
-
-        // Return the whole list item layout (containing 2 TextViews) so that it can be shown in
-        // the ListView.
-        return listItemView;
+        // Return a new holder instance
+        ViewHolder viewHolder = new ViewHolder(contactView);
+        return viewHolder;
     }
+
+    // Involves populating data into the item through holder
+    @Override
+    public void onBindViewHolder(SongAdapter.ViewHolder viewHolder, int position) {
+        // Get the data model based on position
+        Song song = mSong.get(position);
+
+        // Set item views based on your views and data model
+        TextView textView1 = viewHolder.songNameTextView;
+        textView1.setText(song.getSongName());
+        TextView textView2 = viewHolder.artistNameTextView;
+        textView2.setText(song.getSongArtist());
+    }
+
+    // Returns the total count of items in the list
+    @Override
+    public int getItemCount() {
+        return mSong.size();
+    }
+
+    // Provide a direct reference to each of the views within a data item
+    // by using ButterKnife for cleaner experience
+    // Used to cache the views within the item layout for fast access
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.song_name) TextView songNameTextView;
+        @BindView(R.id.artist_name) TextView artistNameTextView;
+
+        // We also create a constructor that accepts the entire item row
+        // and does the view lookups to find each subview
+        public ViewHolder(View itemView) {
+            // Stores the itemView in a public final member variable that can be used
+            // to access the context from any ViewHolder instance.
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+
+        }
+    }
+
 }

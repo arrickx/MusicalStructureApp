@@ -7,19 +7,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class NowPlayingActivity extends AppCompatActivity {
+    @BindView(R.id.current_song) TextView currentSong;
+    @BindView(R.id.current_artist) TextView currentArtist;
+    @BindView(R.id.last_song) ImageView playLast;
+    @BindView(R.id.pause_song) ImageView pause;
+    @BindView(R.id.play_song) ImageView play;
+    @BindView(R.id.next_song) ImageView playNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_playing);
 
-        TextView currentSong = findViewById(R.id.current_song);
-        TextView currentArtist = findViewById(R.id.current_artist);
-        ImageView playLast = findViewById(R.id.last_song);
-        ImageView pause = findViewById(R.id.pause_song);
-        ImageView play = findViewById(R.id.play_song);
-        ImageView playNext = findViewById(R.id.next_song);
+        ButterKnife.bind(this);
+
         final String currentSongName = getIntent().getExtras().getString("songName");
         String currentArtistName = getIntent().getExtras().getString("artistName");
 

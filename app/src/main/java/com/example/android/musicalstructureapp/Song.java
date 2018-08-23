@@ -6,14 +6,10 @@ package com.example.android.musicalstructureapp;
  */
 public class Song {
 
-    /**
-     * The name of the song.
-     */
+    // The name of the song
     private String mSongName;
 
-    /**
-     * The artist of the song
-     */
+    // he artist of the song
     private String mSongArtist;
 
     public Song(String SongName, String SongArtist) {
@@ -21,16 +17,12 @@ public class Song {
         mSongArtist = SongArtist;
     }
 
-    /**
-     * Get the name of the song.
-     */
+    // Get the name of the song.
     public String getSongName() {
         return mSongName;
     }
 
-    /**
-     * Get the artist of the song.
-     */
+    // Get the artist of the song.
     public String getSongArtist() {
         return mSongArtist;
     }
